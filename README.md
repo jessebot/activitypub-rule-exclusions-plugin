@@ -1,16 +1,7 @@
-# OWASP CRS - Template Plugin
-
+# OWASP CRS - ActivityPub Rule Exclusions Plugin
 ![Integration tests](https://github.com/coreruleset/template-plugin/actions/workflows/integration.yml/badge.svg)
 
-The OWASP CRS comes with a plugin structure that allows
-to add official and third-party plugins to work with the existing
-baseline CRS installation.
-
-This repository contains a template-plugin that you can use as a base
-to start writing your own plugin. And it illustrates the idea behind
-the plugin mechanism.
-
-The template plugin in this repository is an offical CRS plugin.
+An OWASP CRS Rule exclusions plugin for legitimate ActivityPub requests.
 
 The CRS plugin documentation can be found on the [website](https://coreruleset.org/docs/configuring/plugins/).
 
@@ -88,7 +79,7 @@ template-plugin-test-parameter. If is present and not empty, then
 a rule alert is triggered and the anomaly score is raised with
 a severity CRITICAL score.
 
-Rule 9500099 in template-before.conf checks for the 
+Rule 9500099 in template-before.conf checks for the
 TX variable `template-plugin_enabled`. If the variable is existing and it is
 set to 0, then the subsequent rules of the plugin are removed for the
 current transaction. This effectively disables the plugin for the
@@ -101,7 +92,7 @@ Rule 9500100 in template-before.conf checks for the existence of the
 request parameter `template-plugin-test-parameter`. If the parameter exists
 and is non-empty, a critical alert is thrown.
 
-Rule 9500500 in template-after.conf looks in the response body for a 
+Rule 9500500 in template-after.conf looks in the response body for a
 supposed token (that is probably not existing there).
 This rule is commented out and serves as an example for a response rule.
 
@@ -134,7 +125,7 @@ The rules run in the order described in the following sections.
 
 ### Phase 1
 
-As you know, ModSecurity rules can run in multiple phases. The 
+As you know, ModSecurity rules can run in multiple phases. The
 engine will first execute all rules in phase 1, then all the
 rules in phase 2. If a phase 2 rule is listed in a rules file
 before a phase 1 rule, then the phase 1 rule is executed first.
@@ -201,7 +192,7 @@ phase 2 rules.
 * You do not necessarily need to follow the scoring policy
   of the CRS rule set. If you deem it necessary, then feel
   free to issue a deny directly.
-* If you do anomaly scoring, then please score in a way that 
+* If you do anomaly scoring, then please score in a way that
   fits into the existing CRS anomaly scoring infrastructure.
   That means rule 949110 is meant to block requests and
   rule 959100 is meant to block responses.
