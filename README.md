@@ -1,7 +1,10 @@
 # OWASP CRS - ActivityPub Rule Exclusions Plugin
 ![Integration tests](https://github.com/coreruleset/template-plugin/actions/workflows/integration.yml/badge.svg)
 
-An OWASP CRS Rule exclusions plugin for legitimate ActivityPub requests. This is an experimental plugin and is mirrored from [git.open.engineering](https://git.open.engineering/oeng/activitypub-rule-exclusions-plugin)
+An OWASP CRS Rule exclusions plugin for legitimate ActivityPub requests. This is an experimental plugin and is mirrored from [git.open.engineering](https://git.open.engineering/oeng/activitypub-rule-exclusions-plugin) to the following locations:
+
+- [Codeberg](https://codeberg.org/open-engineering/activitypub-rule-exclusions-plugin) (please submit Issues and PRs here)
+- [GitHub](https://github.com/jessebot/activitypub-rule-exclusions-plugin)
 
 The CRS plugin documentation can be found on the [website](https://coreruleset.org/docs/configuring/plugins/).
 
