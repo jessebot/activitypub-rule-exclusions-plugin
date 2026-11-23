@@ -1,0 +1,89 @@
+---
+meta:
+  author: "Jesse Hitch"
+  description: "ActivityPub Rule Exclusions Plugin"
+rule_id: 9532003
+tests:
+  - test_id: 1
+    desc: Check if most common exception works
+    stages:
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: OWASP CRS
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Accept-Charset: utf-8
+            Content-Type: application/ld+json
+          port: 80
+          method: POST
+          uri: /users/exampleuser/statuses/01M844422MYQG8S8J6D6VO4V8T/replies
+          data: |-
+            {
+              "@context": [
+                "https://gotosocial.org/ns",
+                "https://www.w3.org/ns/activitystreams"
+              ],
+              "actor": "https://test.fedi.tld/users/testuser",
+              "id": "https://test.fedi.tld/users/testuser/statuses/01M848WV04QB5MFAJ26RBV7651/activity#Create",
+              "object": {
+                "attributedTo": "https://test.fedi.tld/users/testuser",
+                "content": "<p><span class=\"h-card\"><a href=\"https://social.test.tld/@testuser2\" class=\"u-url mention\" rel=\"nofollow noreferrer noopener\" target=\"_blank\">@<span>testuser2</span></a></span> perhaps I meep now?</p>",
+                "contentMap": {
+                  "en": "<p><span class=\"h-card\"><a href=\"https://social.test.tld/@testuser2\" class=\"u-url mention\" rel=\"nofollow noreferrer noopener\" target=\"_blank\">@<span>testuser2</span></a></span> perhaps I meep now?</p>"
+                },
+                "id": "https://test.fedi.tld/users/testuser/statuses/01M848WV04QB5MFAJ26RBV7651",
+                "inReplyTo": "https://test.fedi.tld/users/testuser/statuses/01M848JV55865SM84X6TJYQCC5",
+                "interactionPolicy": {
+                  "canAnnounce": {
+                    "automaticApproval": [
+                      "https://test.fedi.tld/users/testuser"
+                    ]
+                  },
+                  "canLike": {
+                    "automaticApproval": [
+                      "https://test.fedi.tld/users/testuser",
+                      "https://social.test.tld/users/testuser2"
+                    ]
+                  },
+                  "canQuote": {
+                    "automaticApproval": [
+                      "https://test.fedi.tld/users/testuser"
+                    ]
+                  },
+                  "canReply": {
+                    "automaticApproval": [
+                      "https://test.fedi.tld/users/testuser",
+                      "https://social.test.tld/users/testuser2"
+                    ]
+                  }
+                },
+                "published": "2026-11-23T13:18:01Z",
+                "replies": {
+                  "first": {
+                    "id": "https://test.fedi.tld/users/testuser/statuses/01M848WV04QB5MFAJ26RBV7651/replies?page=true",
+                    "next": "https://test.fedi.tld/users/testuser/statuses/01M848WV04QB5MFAJ26RBV7651/replies?page=true&only_other_accounts=false",
+                    "partOf": "https://test.fedi.tld/users/testuser/statuses/01M848WV04QB5MFAJ26RBV7651/replies",
+                    "type": "CollectionPage"
+                  },
+                  "id": "https://test.fedi.tld/users/testuser/statuses/01M848WV04QB5MFAJ26RBV7651/replies",
+                  "type": "Collection"
+                },
+                "tag": {
+                  "href": "https://social.test.tld/users/testuser2",
+                  "name": "@testuser2@social.test.tld",
+                  "type": "Mention"
+                },
+                "to": "https://social.test.tld/users/testuser2",
+                "type": "Note",
+                "url": "https://test.fedi.tld/@testuser/statuses/01M848WV04QB5MFAJ26RBV7651"
+              },
+              "published": "2026-11-23T13:18:01Z",
+              "to": "https://social.test.tld/users/testuser2",
+              "type": "Create"
+            }
+        output:
+          log:
+            no_expect_ids:
+              - 920600
+              - 920450
