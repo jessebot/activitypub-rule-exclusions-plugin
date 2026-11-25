@@ -41,7 +41,6 @@ compatibility:
   # truly supports every engine should omit `engines` instead: per
   # docs/plugin-descriptor-schema.md, an omitted field already means "all".
   engines:
-    - "modsecurity3"
     - "coraza"
 
 configuration:
